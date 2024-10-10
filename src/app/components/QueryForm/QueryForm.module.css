@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.capabilities {
+  flex: 1;
+  padding: 20px;
+  border-right: 1px solid #ccc; /* Optional border for separation */
+}
+
+.formContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Stack form and response vertically */
+}
+
+.form {
+  padding: 20px;
+}
+
+.inputTextArea {
+  width: 100%;
+  resize: none;
+}
+
+.radioGroup {
+  margin-top: 10px; /* Add some spacing between radio buttons */
+}
+
+.inputResponsePair {
+  margin-top: 20px; /* Space between each input-response pair */
+}
+
+.responseTextArea {
+  width: 100%;
+  resize: none;
+}
+
+/* Style for Clear All button */
+.clearButton {
+  margin-top: 10px; /* Space above the button */
+  background-color: #ff4d4d; /* Red background */
+  color: white; /* White text color */
+  border: none; /* No border */
+  padding: 10px; /* Padding around text */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.clearButton:hover {
+  background-color: #ff1a1a; /* Darker red on hover */
+}
