@@ -96,8 +96,8 @@ const QueryForm: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-full flex">
-      <div className="w-[300px] min-w-[300px] bg-primary text-white">
+    <div className={`w-full flex pl-[300px] ${isSearched ? "pb-40" : ""}`}>
+      <div className="w-[300px] min-w-[300px] bg-primary text-white fixed top-0 left-0 h-full z-10">
         <h1 className="flex justify-center p-4 mb-8 border-b border-opacity-35 border-white">
           <Image
             src="/assets/images/textmaster.svg"
@@ -133,7 +133,7 @@ const QueryForm: React.FC = () => {
               &quot;Translate&quot; and format your input as follows:
               <br />
               <code>
-                Translate to &quot;desired language&quot;: &quot;your text to be
+                Translate in &quot;desired language&quot;: &quot;your text to be
                 translated&quot;
               </code>
             </li>
@@ -141,12 +141,22 @@ const QueryForm: React.FC = () => {
         </div>
       </div>
 
-      <div className="w-full flex flex-col items-center justify-center px-8 pb-20 pt-6">
+      <div
+        className={`w-full flex flex-col items-center justify-center px-8 pt-6 relative h-screen ${
+          isSearched ? "!h-auto" : ""
+        }`}
+      >
         <form
           onSubmit={handleSubmit}
-          className={`w-full ${isSearched ? "searchBottom" : ""}`}
+          className={`w-full ${
+            isSearched ? "fixed bottom-0 left-0 pl-[300px] bg-white" : ""
+          }`}
         >
-          <div className="max-w-3xl mx-auto w-full relative">
+          <div
+            className={`mx-auto w-full px-6 relative ${
+              isSearched ? "max-w-full" : "max-w-3xl"
+            }`}
+          >
             <div className="flex justify-between px-4 mb-2">
               <label className="whitespace-pre-line break-words font-display text-xl font-regular text-primary">
                 Your text Here:
@@ -195,7 +205,7 @@ const QueryForm: React.FC = () => {
               rows={10}
               className="w-full h-20 rounded-full bg-slate-200 border-[6px] border-slate-50 resize-none outline-none shadow-xs pl-6 pr-24 py-5"
             />
-            <div className="flex items-center gap-3 absolute right-0 bottom-0 px-6 pb-8">
+            <div className="flex items-center gap-3 absolute right-0 bottom-0 pl-6 pr-12 pb-8">
               <button
                 className="w-8 h-8 rounded-full bg-slate-100 flex justify-center items-center border-none outline-none"
                 type="button"
@@ -245,11 +255,11 @@ const QueryForm: React.FC = () => {
         {/* Displaying user inputs and their corresponding responses */}
         {inputsList.map((item, index) => (
           <div
-            className="w-full h-auto"
+            className="w-full h-auto mb-8"
             key={index}
             ref={index === inputsList.length - 1 ? lastResponseRef : null}
           >
-            <p className="whitespace-pre-line break-words font-display text-2xl font-regular text-primary mb-4">
+            <p className="whitespace-pre-line break-words font-display text-l font-regular text-primary mb-4">
               {item.input}
             </p>
             <h3 className="flex gap-1 mb-3">
@@ -277,6 +287,7 @@ const QueryForm: React.FC = () => {
                 ? typingEffect
                 : item.response || ""}
             </p>
+            <hr className="mt-5" />
           </div>
         ))}
       </div>
