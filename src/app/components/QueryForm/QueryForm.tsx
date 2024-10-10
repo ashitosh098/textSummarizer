@@ -105,15 +105,16 @@ const QueryForm: React.FC = () => {
         <h3>Steps to Use:</h3>
         <ol>
           <li>
-            For summarization, select "Summarize" and add the text you need a
-            summary of in the input box.
+            For summarization, select &quot;Summarize&quot; and add the text you
+            need a summary of in the input box.
           </li>
           <li>
-            To utilize the translation feature, please select "Translate" and
-            format your input as follows:
+            To utilize the translation feature, please select
+            &quot;Translate&quot; and format your input as follows:
             <br />
             <code>
-              Translate to "desired language": "your text to be translated"
+              Translate to &quot;desired language&quot;: &quot;your text to be
+              translated&quot;
             </code>
           </li>
         </ol>
