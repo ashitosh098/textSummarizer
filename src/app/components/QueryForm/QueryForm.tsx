@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./QueryForm.module.css";
 import Image from "next/image";
 
@@ -94,6 +94,13 @@ const QueryForm: React.FC = () => {
       }
     }, 10); // Adjust typing speed here
   };
+
+  useEffect(() => {
+    if (inputTextAreaRef.current) {
+      inputTextAreaRef.current.style.height = "90px"; // Reset height
+      inputTextAreaRef.current.style.height = `${inputTextAreaRef.current.scrollHeight}px`; // Set to scrollHeight
+    }
+  }, [input]);
 
   return (
     <div className={`w-full flex pl-[300px] ${isSearched ? "pb-40" : ""}`}>
@@ -203,7 +210,7 @@ const QueryForm: React.FC = () => {
               onChange={handleInputChange}
               required
               rows={10}
-              className="w-full h-20 rounded-full bg-slate-200 border-[6px] border-slate-50 resize-none outline-none shadow-xs pl-6 pr-24 py-5"
+              className="w-full h-20 rounded-[20px] bg-slate-200 border-[6px] border-slate-50 resize-none outline-none shadow-xs pl-6 pr-24 py-5"
             />
             <div className="flex items-center gap-3 absolute right-0 bottom-0 pl-6 pr-12 pb-8">
               <button
@@ -255,11 +262,11 @@ const QueryForm: React.FC = () => {
         {/* Displaying user inputs and their corresponding responses */}
         {inputsList.map((item, index) => (
           <div
-            className="w-full h-auto mb-8"
+            className={`w-full h-auto mb-8 ${styles.result}`}
             key={index}
             ref={index === inputsList.length - 1 ? lastResponseRef : null}
           >
-            <p className="whitespace-pre-line break-words font-display text-l font-regular text-primary mb-4">
+            <p className="whitespace-pre-line break-words font-display text-xl font-regular text-primary mb-4">
               {item.input}
             </p>
             <h3 className="flex gap-1 mb-3">
@@ -287,7 +294,6 @@ const QueryForm: React.FC = () => {
                 ? typingEffect
                 : item.response || ""}
             </p>
-            <hr className="mt-5" />
           </div>
         ))}
       </div>

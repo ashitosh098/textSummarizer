@@ -1,3 +1,6 @@
 .customRadio input:checked ~ label {
   @apply text-white bg-primary;
 }
+.result:not(:last-child) {
+  @apply border-b pb-4;
+}
