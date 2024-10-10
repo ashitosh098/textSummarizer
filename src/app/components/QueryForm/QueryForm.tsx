@@ -270,18 +270,13 @@ const QueryForm: React.FC = () => {
                 Answer
               </span>
             </h3>
-            <label>
-              <textarea
-                value={
-                  index === inputsList.length - 1
-                    ? typingEffect // Show typing effect for latest response being typed out
-                    : item.response || "" // Show final response or empty if not yet available
-                }
-                readOnly
-                rows={5} // Start with five rows
-                className="border-none w-full h-auto outline-none shadow-none" // Use the imported style
-              />
-            </label>
+            <p
+              className={`border-none w-full h-auto outline-none shadow-none whitespace-pre-wrap break-words ${styles.responseTextArea}`}
+            >
+              {index === inputsList.length - 1
+                ? typingEffect
+                : item.response || ""}
+            </p>
           </div>
         ))}
       </div>
